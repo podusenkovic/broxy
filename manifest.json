@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Broxy — Local Proxy Switcher",
+  "version": "1.0.0",
+  "description": "Маршрутизирует выбранные сайты через локальный прокси (HTTP/HTTPS/SOCKS5). Остальной трафик идёт напрямую.",
+  "permissions": ["proxy", "storage", "tabs"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Broxy",
+    "default_popup": "popup/popup.html"
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  }
+}

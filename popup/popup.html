@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Broxy</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="brand">
+        <span class="logo">B</span>
+        <span class="brand-name">Broxy</span>
+      </div>
+      <label class="switch" title="Включить/выключить прокси">
+        <input type="checkbox" id="enabled" />
+        <span class="slider"></span>
+      </label>
+    </header>
+
+    <section class="status" id="status">
+      <span class="status-dot" id="statusDot"></span>
+      <span id="statusText">Загрузка…</span>
+    </section>
+
+    <section class="proxy-line" id="proxyLine"></section>
+
+    <section class="site">
+      <div class="site-host" id="siteHost">—</div>
+      <button class="btn site-btn" id="siteToggle" disabled>—</button>
+    </section>
+
+    <footer class="footer">
+      <button class="link" id="openOptions">Настройки и список сайтов</button>
+    </footer>
+
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>
