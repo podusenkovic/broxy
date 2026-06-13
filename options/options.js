@@ -1,4 +1,4 @@
-import { getState, setState, normalizePattern } from "../shared.js";
+import { getState, setState, normalizePattern, PRESETS } from "../shared.js";
 
 const els = {
   scheme: document.getElementById("scheme"),
@@ -7,6 +7,7 @@ const els = {
   enabled: document.getElementById("enabled"),
   newPattern: document.getElementById("newPattern"),
   addPattern: document.getElementById("addPattern"),
+  presets: document.getElementById("presets"),
   patterns: document.getElementById("patterns"),
   save: document.getElementById("save"),
   savedMsg: document.getElementById("savedMsg"),
@@ -50,6 +51,28 @@ function addPattern() {
   renderPatterns();
 }
 
+function applyPreset(domains) {
+  for (const domain of domains) {
+    const pattern = normalizePattern(domain);
+    if (pattern && !patterns.includes(pattern)) {
+      patterns.push(pattern);
+    }
+  }
+  renderPatterns();
+}
+
+function renderPresets() {
+  for (const [name, domains] of Object.entries(PRESETS)) {
+    const button = document.createElement("button");
+    button.className = "preset";
+    button.type = "button";
+    button.textContent = `+ ${name}`;
+    button.title = domains.join(", ");
+    button.addEventListener("click", () => applyPreset(domains));
+    els.presets.appendChild(button);
+  }
+}
+
 async function load() {
   const state = await getState();
   els.scheme.value = state.proxy.scheme;
@@ -57,6 +80,7 @@ async function load() {
   els.port.value = state.proxy.port;
   els.enabled.checked = state.enabled;
   patterns = [...state.patterns];
+  renderPresets();
   renderPatterns();
 }
 

@@ -17,6 +17,23 @@ export const DEFAULT_STATE = {
   patterns: [],
 };
 
+export const PRESETS = {
+  YouTube: [
+    "youtube.com",
+    "youtu.be",
+    "ytimg.com",
+    "ggpht.com",
+    "googlevideo.com",
+    "googleapis.com",
+    "gstatic.com",
+  ],
+  Google: ["google.com", "googleapis.com", "gstatic.com", "googleusercontent.com"],
+  "Twitter / X": ["x.com", "twitter.com", "twimg.com", "t.co"],
+  Instagram: ["instagram.com", "cdninstagram.com", "fbcdn.net"],
+  Reddit: ["reddit.com", "redd.it", "redditstatic.com", "redditmedia.com"],
+  Netflix: ["netflix.com", "nflxvideo.net", "nflximg.net", "nflxext.com"],
+};
+
 export async function getState() {
   const stored = await chrome.storage.local.get(STORAGE_KEY);
   const value = stored[STORAGE_KEY] || {};
