@@ -210,3 +210,13 @@ code {
   color: var(--accent);
   font-size: 13px;
 }
+
+.form-error {
+  color: var(--danger);
+  font-size: 13px;
+  margin-right: auto;
+}
+
+.card .hint + .hint {
+  margin-top: 8px;
+}

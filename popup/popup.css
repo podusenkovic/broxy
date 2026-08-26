@@ -36,14 +36,10 @@ body {
 }
 
 .logo {
-  display: grid;
-  place-items: center;
   width: 26px;
   height: 26px;
   border-radius: 8px;
-  background: linear-gradient(135deg, var(--accent), #818cf8);
-  color: #0f172a;
-  font-weight: 800;
+  display: block;
 }
 
 .brand-name {

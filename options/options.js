@@ -1,4 +1,13 @@
-import { getState, setState, normalizePattern, PRESETS } from "../shared.js";
+import {
+  getState,
+  setState,
+  normalizePattern,
+  PRESETS,
+  applyI18n,
+  t,
+  isValidHost,
+  isValidPort,
+} from "../shared.js";
 
 const els = {
   scheme: document.getElementById("scheme"),
@@ -11,39 +20,49 @@ const els = {
   patterns: document.getElementById("patterns"),
   save: document.getElementById("save"),
   savedMsg: document.getElementById("savedMsg"),
+  formError: document.getElementById("formError"),
 };
 
 let patterns = [];
+
+function showError(message) {
+  els.formError.textContent = message || "";
+}
 
 function renderPatterns() {
   els.patterns.innerHTML = "";
   if (patterns.length === 0) {
     const empty = document.createElement("li");
     empty.className = "empty";
-    empty.textContent = "Список пуст — добавьте домен выше";
+    empty.textContent = t("listEmpty");
     els.patterns.appendChild(empty);
     return;
   }
   for (const pattern of patterns) {
-    const li = document.createElement("li");
-    const span = document.createElement("span");
-    span.textContent = pattern;
+    const item = document.createElement("li");
+    const label = document.createElement("span");
+    label.textContent = pattern;
     const remove = document.createElement("button");
     remove.className = "remove";
+    remove.type = "button";
     remove.textContent = "×";
-    remove.title = "Удалить";
+    remove.title = t("remove");
     remove.addEventListener("click", () => {
-      patterns = patterns.filter((p) => p !== pattern);
+      patterns = patterns.filter((value) => value !== pattern);
       renderPatterns();
     });
-    li.append(span, remove);
-    els.patterns.appendChild(li);
+    item.append(label, remove);
+    els.patterns.appendChild(item);
   }
 }
 
 function addPattern() {
   const pattern = normalizePattern(els.newPattern.value);
-  if (!pattern) return;
+  if (!isValidHost(pattern)) {
+    showError(t("errorPattern"));
+    return;
+  }
+  showError("");
   if (!patterns.includes(pattern)) {
     patterns.push(pattern);
   }
@@ -54,7 +73,7 @@ function addPattern() {
 function applyPreset(domains) {
   for (const domain of domains) {
     const pattern = normalizePattern(domain);
-    if (pattern && !patterns.includes(pattern)) {
+    if (isValidHost(pattern) && !patterns.includes(pattern)) {
       patterns.push(pattern);
     }
   }
@@ -73,7 +92,15 @@ function renderPresets() {
   }
 }
 
+function readFormError() {
+  if (!isValidHost(els.host.value)) return t("errorHost");
+  if (!isValidPort(els.port.value)) return t("errorPort");
+  return "";
+}
+
 async function load() {
+  applyI18n();
+  document.title = t("optionsTitle");
   const state = await getState();
   els.scheme.value = state.proxy.scheme;
   els.host.value = state.proxy.host;
@@ -85,23 +112,30 @@ async function load() {
 }
 
 async function save() {
-  const port = parseInt(els.port.value, 10);
+  const error = readFormError();
+  if (error) {
+    showError(error);
+    return;
+  }
+  showError("");
   await setState({
     enabled: els.enabled.checked,
     proxy: {
       scheme: els.scheme.value,
-      host: els.host.value.trim() || "127.0.0.1",
-      port: Number.isInteger(port) ? port : 8080,
+      host: els.host.value.trim(),
+      port: Number(els.port.value),
     },
     patterns,
   });
-  els.savedMsg.textContent = "Сохранено ✓";
-  setTimeout(() => (els.savedMsg.textContent = ""), 2000);
+  els.savedMsg.textContent = t("saved");
+  setTimeout(() => {
+    els.savedMsg.textContent = "";
+  }, 2000);
 }
 
 els.addPattern.addEventListener("click", addPattern);
-els.newPattern.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") addPattern();
+els.newPattern.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") addPattern();
 });
 els.save.addEventListener("click", save);
 

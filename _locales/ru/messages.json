@@ -1,0 +1,116 @@
+{
+  "extName": {
+    "message": "Broxy — локальный прокси"
+  },
+  "extNameShort": {
+    "message": "Broxy"
+  },
+  "extDescription": {
+    "message": "Маршрутизирует выбранные сайты через локальный прокси. Остальной трафик идёт напрямую."
+  },
+  "enableProxy": {
+    "message": "Включить или выключить прокси"
+  },
+  "statusOn": {
+    "message": "Прокси активен · сайтов: $COUNT$",
+    "placeholders": {
+      "count": { "content": "$1" }
+    }
+  },
+  "statusOnEmpty": {
+    "message": "Включён, но список сайтов пуст"
+  },
+  "statusOff": {
+    "message": "Прокси выключен"
+  },
+  "noActiveSite": {
+    "message": "Нет активного сайта"
+  },
+  "proxySite": {
+    "message": "Проксировать сайт"
+  },
+  "removeSite": {
+    "message": "Убрать из прокси"
+  },
+  "openOptions": {
+    "message": "Настройки и список сайтов"
+  },
+  "optionsTitle": {
+    "message": "Broxy — Настройки"
+  },
+  "optionsHeading": {
+    "message": "Broxy"
+  },
+  "optionsSubtitle": {
+    "message": "Маршрутизирует только указанные сайты через локальный прокси. Остальной трафик идёт напрямую."
+  },
+  "proxySection": {
+    "message": "Локальный прокси"
+  },
+  "protocol": {
+    "message": "Протокол"
+  },
+  "host": {
+    "message": "Хост"
+  },
+  "port": {
+    "message": "Порт"
+  },
+  "proxyEnabled": {
+    "message": "Прокси включён"
+  },
+  "sitesSection": {
+    "message": "Сайты для проксирования"
+  },
+  "sitesHint": {
+    "message": "Один домен на строку. Поддомены учитываются автоматически (example.com покрывает и www.example.com)."
+  },
+  "add": {
+    "message": "Добавить"
+  },
+  "presetsLabel": {
+    "message": "Пресеты:"
+  },
+  "save": {
+    "message": "Сохранить"
+  },
+  "saved": {
+    "message": "Сохранено"
+  },
+  "listEmpty": {
+    "message": "Список пуст — добавьте домен выше"
+  },
+  "remove": {
+    "message": "Удалить"
+  },
+  "howTitle": {
+    "message": "Как это работает"
+  },
+  "howBody1": {
+    "message": "Broxy не содержит прокси-сервер. Нужен уже запущенный локальный прокси (например 127.0.0.1:8080)."
+  },
+  "howBody2": {
+    "message": "Когда переключатель включён и список сайтов не пуст, Broxy в фоне применяет PAC-скрипт через API прокси браузера. Указанные домены идут в ваш прокси, остальной трафик — DIRECT."
+  },
+  "howBody3": {
+    "message": "Пока Broxy активен, выключите встроенный VPN Opera — иначе они будут конфликтовать."
+  },
+  "howBody4": {
+    "message": "Выключение Broxy очищает его настройки прокси и возвращает управление браузеру."
+  },
+  "privacyTitle": {
+    "message": "Конфиденциальность"
+  },
+  "privacyBody": {
+    "message": "Настройки хранятся только в этом браузере. Broxy не собирает аккаунты, историю и личные данные и ничего не отправляет на удалённый сервер."
+  },
+  "errorHost": {
+    "message": "Укажите корректный хост или IPv4 (например 127.0.0.1)."
+  },
+  "errorPort": {
+    "message": "Укажите порт от 1 до 65535."
+  },
+  "errorPattern": {
+    "message": "Укажите корректный домен (например example.com)."
+  }
+}

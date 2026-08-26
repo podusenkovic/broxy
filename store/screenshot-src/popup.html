@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      * { box-sizing: border-box; }
+      html, body { margin: 0; width: 612px; height: 408px; }
+      body {
+        background: #ffffff;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+      .browser {
+        width: 580px;
+        margin: 16px auto 0;
+        border: 1px solid #d7dce3;
+        border-radius: 10px;
+        overflow: hidden;
+        background: #f4f6f8;
+      }
+      .toolbar {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 12px;
+        background: #eceff3;
+        border-bottom: 1px solid #d7dce3;
+      }
+      .dots { display: flex; gap: 5px; }
+      .dots span { width: 9px; height: 9px; border-radius: 50%; background: #c5ccd6; }
+      .omnibox {
+        flex: 1;
+        background: #fff;
+        border: 1px solid #d0d5dd;
+        border-radius: 8px;
+        padding: 6px 10px;
+        font-size: 12px;
+        color: #475569;
+      }
+      .ext {
+        width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        border: 1px solid #38bdf8;
+        overflow: hidden;
+      }
+      .ext img { width: 100%; height: 100%; display: block; }
+      .page {
+        height: 86px;
+        background: #fff;
+        color: #94a3b8;
+        font-size: 13px;
+        padding: 16px 18px;
+      }
+      .popup {
+        width: 320px;
+        margin: 8px 16px 0 auto;
+        background: #0f172a;
+        color: #e2e8f0;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 12px 32px rgba(15, 23, 42, 0.18);
+      }
+      .header, .site, .footer { display: flex; align-items: center; }
+      .header { justify-content: space-between; padding: 14px 16px; border-bottom: 1px solid #334155; }
+      .brand { display: flex; align-items: center; gap: 8px; font-weight: 700; }
+      .brand img { width: 26px; height: 26px; border-radius: 8px; }
+      .switch { width: 46px; height: 26px; background: #22c55e; border-radius: 999px; position: relative; }
+      .switch::after {
+        content: "";
+        position: absolute;
+        width: 20px; height: 20px; border-radius: 50%;
+        background: #fff; top: 3px; right: 3px;
+      }
+      .status { display: flex; align-items: center; gap: 8px; padding: 12px 16px; color: #94a3b8; font-size: 13px; }
+      .dot { width: 10px; height: 10px; border-radius: 50%; background: #22c55e; }
+      .proxy { padding: 0 16px 12px; font: 12px ui-monospace, Menlo, monospace; color: #94a3b8; }
+      .site { gap: 10px; padding: 12px 16px; border-top: 1px solid #334155; }
+      .host { flex: 1; font-size: 13px; font-weight: 600; }
+      .btn {
+        border: 0; border-radius: 8px; padding: 8px 12px;
+        font-size: 13px; font-weight: 600; background: #f87171; color: #1f0a0a;
+      }
+      .footer { padding: 12px 16px; border-top: 1px solid #334155; color: #38bdf8; font-size: 13px; }
+    </style>
+  </head>
+  <body>
+    <div class="browser">
+      <div class="toolbar">
+        <div class="dots"><span></span><span></span><span></span></div>
+        <div class="omnibox">https://www.youtube.com</div>
+        <div class="ext"><img src="../../icons/icon48.png" alt="" /></div>
+      </div>
+      <div class="page">YouTube · example browsing tab</div>
+    </div>
+    <div class="popup">
+      <div class="header">
+        <div class="brand"><img src="../../icons/icon48.png" alt="" />Broxy</div>
+        <div class="switch"></div>
+      </div>
+      <div class="status"><span class="dot"></span>Proxy on · 7 sites</div>
+      <div class="proxy">HTTP → 127.0.0.1:8080</div>
+      <div class="site">
+        <div class="host">www.youtube.com</div>
+        <button class="btn">Remove from proxy</button>
+      </div>
+      <div class="footer">Settings and site list</div>
+    </div>
+  </body>
+</html>

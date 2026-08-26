@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,18 +9,18 @@
   <body>
     <header class="header">
       <div class="brand">
-        <span class="logo">B</span>
+        <img class="logo" src="../icons/icon48.png" width="26" height="26" alt="" />
         <span class="brand-name">Broxy</span>
       </div>
-      <label class="switch" title="Включить/выключить прокси">
-        <input type="checkbox" id="enabled" />
+      <label class="switch">
+        <input type="checkbox" id="enabled" data-i18n-title="enableProxy" />
         <span class="slider"></span>
       </label>
     </header>
 
     <section class="status" id="status">
       <span class="status-dot" id="statusDot"></span>
-      <span id="statusText">Загрузка…</span>
+      <span id="statusText"></span>
     </section>
 
     <section class="proxy-line" id="proxyLine"></section>
@@ -31,7 +31,7 @@
     </section>
 
     <footer class="footer">
-      <button class="link" id="openOptions">Настройки и список сайтов</button>
+      <button class="link" id="openOptions" data-i18n="openOptions"></button>
     </footer>
 
     <script type="module" src="popup.js"></script>

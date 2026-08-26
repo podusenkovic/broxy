@@ -1,0 +1,116 @@
+{
+  "extName": {
+    "message": "Broxy — Local Proxy Switcher"
+  },
+  "extNameShort": {
+    "message": "Broxy"
+  },
+  "extDescription": {
+    "message": "Routes selected sites through a local HTTP, HTTPS, or SOCKS proxy. All other traffic stays direct."
+  },
+  "enableProxy": {
+    "message": "Turn the proxy on or off"
+  },
+  "statusOn": {
+    "message": "Proxy on · $COUNT$ sites",
+    "placeholders": {
+      "count": { "content": "$1" }
+    }
+  },
+  "statusOnEmpty": {
+    "message": "On, but the site list is empty"
+  },
+  "statusOff": {
+    "message": "Proxy off"
+  },
+  "noActiveSite": {
+    "message": "No active website"
+  },
+  "proxySite": {
+    "message": "Proxy this site"
+  },
+  "removeSite": {
+    "message": "Remove from proxy"
+  },
+  "openOptions": {
+    "message": "Settings and site list"
+  },
+  "optionsTitle": {
+    "message": "Broxy — Settings"
+  },
+  "optionsHeading": {
+    "message": "Broxy"
+  },
+  "optionsSubtitle": {
+    "message": "Sends only the sites you list through a local proxy. Everything else stays on a direct connection."
+  },
+  "proxySection": {
+    "message": "Local proxy"
+  },
+  "protocol": {
+    "message": "Protocol"
+  },
+  "host": {
+    "message": "Host"
+  },
+  "port": {
+    "message": "Port"
+  },
+  "proxyEnabled": {
+    "message": "Proxy enabled"
+  },
+  "sitesSection": {
+    "message": "Sites to proxy"
+  },
+  "sitesHint": {
+    "message": "One domain per line. Subdomains are included automatically (example.com also matches www.example.com)."
+  },
+  "add": {
+    "message": "Add"
+  },
+  "presetsLabel": {
+    "message": "Presets:"
+  },
+  "save": {
+    "message": "Save"
+  },
+  "saved": {
+    "message": "Saved"
+  },
+  "listEmpty": {
+    "message": "The list is empty — add a domain above"
+  },
+  "remove": {
+    "message": "Remove"
+  },
+  "howTitle": {
+    "message": "How it works"
+  },
+  "howBody1": {
+    "message": "Broxy does not include a proxy server. You must already run a local proxy (for example 127.0.0.1:8080)."
+  },
+  "howBody2": {
+    "message": "When the switch is on and the site list is not empty, Broxy applies a PAC script in the background through the browser proxy API. Listed domains go to your proxy; all other traffic uses DIRECT."
+  },
+  "howBody3": {
+    "message": "Turn off the built-in Opera VPN while Broxy is active, or the two tools will fight over proxy settings."
+  },
+  "howBody4": {
+    "message": "Turning Broxy off clears its proxy settings and returns control to the browser."
+  },
+  "privacyTitle": {
+    "message": "Privacy"
+  },
+  "privacyBody": {
+    "message": "Settings stay in this browser (local storage). Broxy does not collect accounts, browsing history, or personal data, and it does not send anything to a remote server."
+  },
+  "errorHost": {
+    "message": "Enter a valid hostname or IPv4 address (for example 127.0.0.1)."
+  },
+  "errorPort": {
+    "message": "Enter a port between 1 and 65535."
+  },
+  "errorPattern": {
+    "message": "Enter a valid domain (for example example.com)."
+  }
+}

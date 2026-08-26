@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      * { box-sizing: border-box; }
+      html, body { margin: 0; width: 612px; height: 408px; }
+      body {
+        background: #ffffff;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+      .frame {
+        width: 580px;
+        height: 376px;
+        margin: 16px auto 0;
+        background: #0f172a;
+        color: #e2e8f0;
+        border-radius: 12px;
+        overflow: hidden;
+        padding: 18px 20px;
+      }
+      h1 { margin: 0; font-size: 22px; }
+      .sub { color: #94a3b8; font-size: 12px; margin: 4px 0 14px; }
+      .card {
+        background: #1e293b;
+        border: 1px solid #334155;
+        border-radius: 10px;
+        padding: 12px;
+        margin-bottom: 10px;
+      }
+      h2 { margin: 0 0 10px; font-size: 14px; }
+      .grid { display: grid; grid-template-columns: 1fr 1.5fr 0.8fr; gap: 8px; }
+      label { font-size: 11px; color: #94a3b8; display: flex; flex-direction: column; gap: 4px; }
+      .field {
+        background: #0f172a;
+        border: 1px solid #334155;
+        border-radius: 8px;
+        padding: 7px 8px;
+        color: #e2e8f0;
+        font-size: 13px;
+      }
+      .on { display: flex; align-items: center; gap: 8px; margin-top: 10px; font-size: 13px; }
+      .box { width: 14px; height: 14px; border-radius: 3px; background: #38bdf8; }
+      .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+      .chip {
+        border: 1px solid #38bdf8;
+        color: #38bdf8;
+        border-radius: 999px;
+        padding: 3px 8px;
+        font-size: 11px;
+        font-weight: 600;
+      }
+      .row {
+        display: flex;
+        justify-content: space-between;
+        background: #0f172a;
+        border: 1px solid #334155;
+        border-radius: 8px;
+        padding: 7px 10px;
+        font: 12px ui-monospace, Menlo, monospace;
+        margin-top: 6px;
+      }
+      .save {
+        float: right;
+        margin-top: 4px;
+        background: #38bdf8;
+        color: #0f172a;
+        border: 0;
+        border-radius: 8px;
+        padding: 8px 16px;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="frame">
+      <h1>Broxy</h1>
+      <p class="sub">Sends only the sites you list through a local proxy. Everything else stays direct.</p>
+      <div class="card">
+        <h2>Local proxy</h2>
+        <div class="grid">
+          <label>Protocol<div class="field">HTTP</div></label>
+          <label>Host<div class="field">127.0.0.1</div></label>
+          <label>Port<div class="field">8080</div></label>
+        </div>
+        <div class="on"><span class="box"></span>Proxy enabled</div>
+      </div>
+      <div class="card">
+        <h2>Sites to proxy</h2>
+        <div class="chips">
+          <span class="chip">+ YouTube</span>
+          <span class="chip">+ Google</span>
+          <span class="chip">+ Twitter / X</span>
+        </div>
+        <div class="row"><span>youtube.com</span><span>×</span></div>
+        <div class="row"><span>googlevideo.com</span><span>×</span></div>
+      </div>
+      <button class="save">Save</button>
+    </div>
+  </body>
+</html>

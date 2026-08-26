@@ -1,24 +1,21 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Broxy — Настройки</title>
+    <title>Broxy</title>
     <link rel="stylesheet" href="options.css" />
   </head>
   <body>
     <main class="page">
-      <h1>Broxy</h1>
-      <p class="subtitle">
-        Маршрутизирует только указанные сайты через локальный прокси. Остальной
-        трафик идёт напрямую.
-      </p>
+      <h1 data-i18n="optionsHeading">Broxy</h1>
+      <p class="subtitle" data-i18n="optionsSubtitle"></p>
 
       <section class="card">
-        <h2>Локальный прокси</h2>
+        <h2 data-i18n="proxySection"></h2>
         <div class="grid">
           <label>
-            Протокол
+            <span data-i18n="protocol"></span>
             <select id="scheme">
               <option value="http">HTTP</option>
               <option value="https">HTTPS</option>
@@ -27,40 +24,51 @@
             </select>
           </label>
           <label>
-            Хост
-            <input id="host" type="text" placeholder="127.0.0.1" />
+            <span data-i18n="host"></span>
+            <input id="host" type="text" maxlength="253" data-i18n-placeholder="host" />
           </label>
           <label>
-            Порт
+            <span data-i18n="port"></span>
             <input id="port" type="number" min="1" max="65535" placeholder="8080" />
           </label>
         </div>
         <label class="enabled-row">
           <input type="checkbox" id="enabled" />
-          Прокси включён
+          <span data-i18n="proxyEnabled"></span>
         </label>
       </section>
 
       <section class="card">
-        <h2>Сайты для проксирования</h2>
-        <p class="hint">
-          Один домен на строку. Поддомены учитываются автоматически (например
-          <code>example.com</code> покрывает и <code>www.example.com</code>).
-        </p>
+        <h2 data-i18n="sitesSection"></h2>
+        <p class="hint" data-i18n="sitesHint"></p>
         <div class="add-row">
-          <input id="newPattern" type="text" placeholder="example.com" />
-          <button class="btn" id="addPattern">Добавить</button>
+          <input id="newPattern" type="text" maxlength="253" placeholder="example.com" />
+          <button class="btn" id="addPattern" type="button" data-i18n="add"></button>
         </div>
         <div class="presets">
-          <span class="presets-label">Пресеты:</span>
+          <span class="presets-label" data-i18n="presetsLabel"></span>
           <div class="presets-buttons" id="presets"></div>
         </div>
         <ul class="patterns" id="patterns"></ul>
       </section>
 
+      <section class="card">
+        <h2 data-i18n="howTitle"></h2>
+        <p class="hint" data-i18n="howBody1"></p>
+        <p class="hint" data-i18n="howBody2"></p>
+        <p class="hint" data-i18n="howBody3"></p>
+        <p class="hint" data-i18n="howBody4"></p>
+      </section>
+
+      <section class="card">
+        <h2 data-i18n="privacyTitle"></h2>
+        <p class="hint" data-i18n="privacyBody"></p>
+      </section>
+
       <div class="save-bar">
+        <span class="form-error" id="formError"></span>
         <span class="saved" id="savedMsg"></span>
-        <button class="btn primary" id="save">Сохранить</button>
+        <button class="btn primary" id="save" type="button" data-i18n="save"></button>
       </div>
     </main>
 

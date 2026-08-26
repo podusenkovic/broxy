@@ -1,4 +1,4 @@
-import { getState, setState, normalizePattern } from "../shared.js";
+import { getState, setState, normalizePattern, applyI18n, t } from "../shared.js";
 
 const els = {
   enabled: document.getElementById("enabled"),
@@ -29,20 +29,21 @@ function render(state) {
 
   const active = state.enabled && state.patterns.length > 0;
   els.statusDot.classList.toggle("on", active);
-  els.statusText.textContent = active
-    ? `Прокси активен · сайтов: ${state.patterns.length}`
-    : state.enabled
-      ? "Включён, но список сайтов пуст"
-      : "Прокси выключен";
+  if (active) {
+    els.statusText.textContent = t("statusOn", [String(state.patterns.length)]);
+  } else if (state.enabled) {
+    els.statusText.textContent = t("statusOnEmpty");
+  } else {
+    els.statusText.textContent = t("statusOff");
+  }
 
   els.proxyLine.textContent = `${state.proxy.scheme.toUpperCase()} → ${state.proxy.host}:${state.proxy.port}`;
-
   renderSite(state);
 }
 
 function renderSite(state) {
   if (!currentHost) {
-    els.siteHost.textContent = "Нет активного сайта";
+    els.siteHost.textContent = t("noActiveSite");
     els.siteToggle.disabled = true;
     els.siteToggle.textContent = "—";
     els.siteToggle.classList.remove("active");
@@ -53,19 +54,18 @@ function renderSite(state) {
   const inList = state.patterns.includes(pattern);
   els.siteHost.textContent = currentHost;
   els.siteToggle.disabled = false;
-  els.siteToggle.textContent = inList ? "Убрать из прокси" : "Проксировать сайт";
+  els.siteToggle.textContent = inList ? t("removeSite") : t("proxySite");
   els.siteToggle.classList.toggle("active", inList);
 }
 
 async function init() {
+  applyI18n();
   currentHost = await getActiveHost();
-  const state = await getState();
-  render(state);
+  render(await getState());
 }
 
 els.enabled.addEventListener("change", async () => {
-  const state = await setState({ enabled: els.enabled.checked });
-  render(state);
+  render(await setState({ enabled: els.enabled.checked }));
 });
 
 els.siteToggle.addEventListener("click", async () => {
@@ -74,10 +74,9 @@ els.siteToggle.addEventListener("click", async () => {
   const state = await getState();
   const exists = state.patterns.includes(pattern);
   const patterns = exists
-    ? state.patterns.filter((p) => p !== pattern)
+    ? state.patterns.filter((item) => item !== pattern)
     : [...state.patterns, pattern];
-  const next = await setState({ patterns });
-  render(next);
+  render(await setState({ patterns }));
 });
 
 els.openOptions.addEventListener("click", () => {

@@ -1,16 +1,32 @@
 {
   "manifest_version": 3,
-  "name": "Broxy — Local Proxy Switcher",
-  "version": "1.0.0",
-  "description": "Маршрутизирует выбранные сайты через локальный прокси (HTTP/HTTPS/SOCKS5). Остальной трафик идёт напрямую.",
-  "permissions": ["proxy", "storage", "tabs"],
+  "name": "__MSG_extName__",
+  "version": "1.0.1",
+  "default_locale": "en",
+  "description": "__MSG_extDescription__",
+  "homepage_url": "https://github.com/podusenkovic/broxy",
+  "developer": {
+    "name": "podusenkovic",
+    "url": "https://github.com/podusenkovic/broxy"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": ["proxy", "storage", "activeTab"],
   "background": {
     "service_worker": "background.js",
     "type": "module"
   },
   "action": {
-    "default_title": "Broxy",
-    "default_popup": "popup/popup.html"
+    "default_title": "__MSG_extNameShort__",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
   },
   "options_ui": {
     "page": "options/options.html",
